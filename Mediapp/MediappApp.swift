@@ -11,7 +11,7 @@ import SwiftUI
 struct MediappApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MedicationReminderView()
         }
     }
 }

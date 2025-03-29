@@ -14,6 +14,10 @@
 		FB4CD7BC2D97509F00899B3A /* MediappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7BB2D97509F00899B3A /* MediappTests.swift */; };
 		FB4CD7C62D97509F00899B3A /* MediappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7C52D97509F00899B3A /* MediappUITests.swift */; };
 		FB4CD7C82D97509F00899B3A /* MediappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7C72D97509F00899B3A /* MediappUITestsLaunchTests.swift */; };
+		FB4CD7D52D97510F00899B3A /* MedicationReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7D42D97510F00899B3A /* MedicationReminderView.swift */; };
+		FB4CD7D72D97650300899B3A /* NewAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7D62D97650300899B3A /* NewAlarmView.swift */; };
+		FB4CD7D92D97685F00899B3A /* Medico.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7D82D97685F00899B3A /* Medico.swift */; };
+		FB4CD7DB2D976BBF00899B3A /* Signos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD7DA2D976BBF00899B3A /* Signos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		FB4CD7C12D97509F00899B3A /* MediappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB4CD7C52D97509F00899B3A /* MediappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediappUITests.swift; sourceTree = "<group>"; };
 		FB4CD7C72D97509F00899B3A /* MediappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediappUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FB4CD7D42D97510F00899B3A /* MedicationReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationReminderView.swift; sourceTree = "<group>"; };
+		FB4CD7D62D97650300899B3A /* NewAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmView.swift; sourceTree = "<group>"; };
+		FB4CD7D82D97685F00899B3A /* Medico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
+		FB4CD7DA2D976BBF00899B3A /* Signos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,10 @@
 			children = (
 				FB4CD7AA2D97509D00899B3A /* MediappApp.swift */,
 				FB4CD7AC2D97509D00899B3A /* ContentView.swift */,
+				FB4CD7D42D97510F00899B3A /* MedicationReminderView.swift */,
+				FB4CD7DA2D976BBF00899B3A /* Signos.swift */,
+				FB4CD7D62D97650300899B3A /* NewAlarmView.swift */,
+				FB4CD7D82D97685F00899B3A /* Medico.swift */,
 				FB4CD7AE2D97509F00899B3A /* Assets.xcassets */,
 				FB4CD7B02D97509F00899B3A /* Preview Content */,
 			);
@@ -257,8 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB4CD7DB2D976BBF00899B3A /* Signos.swift in Sources */,
+				FB4CD7D52D97510F00899B3A /* MedicationReminderView.swift in Sources */,
 				FB4CD7AD2D97509D00899B3A /* ContentView.swift in Sources */,
 				FB4CD7AB2D97509D00899B3A /* MediappApp.swift in Sources */,
+				FB4CD7D72D97650300899B3A /* NewAlarmView.swift in Sources */,
+				FB4CD7D92D97685F00899B3A /* Medico.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,96 @@
-//
-//  MedicationReminderView.swift
-//  Mediapp
-//
-//  Created by Alumno on 28/03/25.
-//
-
 import SwiftUI
 
 struct MedicationReminderView: View {
+    @State private var alarms = [
+        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
+        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
+        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
+        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                ZStack {
+                    Image("ver1")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: UIScreen.main.bounds.width, height: 180)
+                        .clipped()
+                        .ignoresSafeArea(edges: .top)
+                }
+                
+                ForEach(alarms.indices, id: \.self) { index in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(alarms[index].medicine)
+                                .font(.headline)
+                            Text(alarms[index].time)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
+                        Button(action: {
+                            alarms[index].taken.toggle()
+                        }) {
+                            Image(systemName: alarms[index].taken ? "checkmark.square.fill" : "square")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.green)
+                        }
+                    }
+                    .padding()
+                    .background(Color.blue.opacity(0.2))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: NewAlarmView()) {
+                    Text("Establecer nueva alarma")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                NavigationLink(destination: ContactarMedicoView()) {
+                    Text("Contactar médico")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                NavigationLink(destination: SignosVitalesView()) {
+                    Text("Tomar signos vitales")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.yellow)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                Spacer()
+            }
+        }
     }
 }
 
-#Preview {
-    MedicationReminderView()
+struct Alarm {
+    var medicine: String
+    var time: String
+    var taken: Bool
+}
+
+struct MedicationReminderView_Previews: PreviewProvider {
+    static var previews: some View {
+        MedicationReminderView()
+    }
 }
