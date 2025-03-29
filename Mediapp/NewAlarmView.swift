@@ -40,8 +40,11 @@ struct NewAlarmView: View {
     @State private var disease: String = ""
     @State private var interval: String = ""
     @State private var dosage: String = ""
+    @State private var duracion: String = ""
     @Environment(\.presentationMode) var presentationMode
-    
+
+    @Binding var alarms: [Alarm] // Binding a la lista de alarmas
+
     var body: some View {
         VStack {
             ZStack {
@@ -50,9 +53,10 @@ struct NewAlarmView: View {
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width, height: 180)
                     .clipped()
-                    .ignoresSafeArea(edges: .top) 
+                    .ignoresSafeArea(edges: .top)
             }
-            
+
+            // Mostrar la imagen seleccionada si existe
             if let image = selectedImage {
                 Image(uiImage: image)
                     .resizable()
@@ -60,6 +64,7 @@ struct NewAlarmView: View {
                     .frame(height: 150)
                     .padding()
             } else {
+                // Botón para seleccionar una imagen
                 Button("Agregar foto") {
                     showingImagePicker = true
                 }
@@ -68,21 +73,37 @@ struct NewAlarmView: View {
                 .cornerRadius(10)
                 .padding()
             }
-            
+
+            // Campo de texto para la enfermedad
             TextField("Enfermedad", text: $disease)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            
+
+            // Campos de texto para el intervalo y la dosis
             HStack {
-                TextField("Cada cuánto", text: $interval)
+                TextField("Cada cuánto(hrs)", text: $interval)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 TextField("Cantidad", text: $dosage)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
             }
-            
+            HStack {
+                TextField("Duracion (horas)", text: $duracion)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+            }
+
+
+            // Botón de guardar
             Button("Guardar") {
+                // Crear una nueva alarma con los datos proporcionados
+                let newAlarm = Alarm(medicine: disease, time: interval, taken: false)
+                alarms.append(newAlarm)  // Agregar la nueva alarma a la lista
+
+                // Aquí podrías guardar la imagen en algún modelo o base de datos si es necesario
+
+                // Volver a la vista anterior
                 presentationMode.wrappedValue.dismiss()
             }
             .frame(maxWidth: .infinity)
@@ -91,7 +112,7 @@ struct NewAlarmView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.horizontal)
-            
+
             Spacer()
         }
         .sheet(isPresented: $showingImagePicker) {
@@ -99,8 +120,22 @@ struct NewAlarmView: View {
         }
     }
 }
+
 struct NewAlarmView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAlarmView()
+        // Lista de alarmas de ejemplo para el preview
+        let alarms = Binding(
+            get: {
+                return [
+                    Alarm(medicine: "Aspirina", time: "Cada 6 horas", taken: false),
+                    Alarm(medicine: "Ibuprofeno", time: "Cada 8 horas", taken: false)
+                ]
+            },
+            set: { _ in }
+        )
+
+        // Pasar el Binding de alarms al NewAlarmView
+        return NewAlarmView(alarms: alarms)
     }
 }
+
