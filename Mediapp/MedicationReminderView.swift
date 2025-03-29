@@ -2,10 +2,8 @@ import SwiftUI
 
 struct MedicationReminderView: View {
     @State private var alarms = [
-        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
-        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
-        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false),
-        Alarm(medicine: "Paracetamol", time: "Dentro de: 5 min", taken: false)
+        Alarm(medicine: "Paracetamol", time: "5", taken: false),
+        Alarm(medicine: "Aspirina", time: "8", taken: false)
     ]
     
     var body: some View {
@@ -25,7 +23,7 @@ struct MedicationReminderView: View {
                         VStack(alignment: .leading) {
                             Text(alarms[index].medicine)
                                 .font(.headline)
-                            Text(alarms[index].time)
+                            Text("Dentro de: \(alarms[index].time) horas")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
@@ -47,7 +45,7 @@ struct MedicationReminderView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: NewAlarmView()) {
+                NavigationLink(destination: NewAlarmView(alarms: $alarms)) {  // Pasar el binding de alarms
                     Text("Establecer nueva alarma")
                         .frame(maxWidth: .infinity)
                         .padding()
